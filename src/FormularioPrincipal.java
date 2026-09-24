@@ -8,10 +8,11 @@ public class FormularioPrincipal extends JFrame {
     private JTextField txtNombre;
     private JTextField txtDocumento;
     private JTextField txtTelefono;
+    private PanelPreferencias panelPreferencias;
 
     public FormularioPrincipal() {
         setTitle("Formulario - Proyecto P00");
-        setSize(500, 400);
+        setSize(550, 650);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // cierra la app al dar click en X
         setLocationRelativeTo(null); // centra la ventana en la pantalla
 
@@ -57,6 +58,14 @@ public class FormularioPrincipal extends JFrame {
         panelPrincipal.add(txtTelefono);
         panelPrincipal.add(Box.createVerticalStrut(20));
 
+        panelPreferencias = new PanelPreferencias();
+        panelPreferencias.setAlignmentX(Component.LEFT_ALIGNMENT);
+        panelPreferencias.setMaximumSize(
+                new Dimension(Integer.MAX_VALUE, 280)
+        );
+
+        panelPrincipal.add(panelPreferencias);
+
         add(panelPrincipal);
     }
 
@@ -79,4 +88,11 @@ public class FormularioPrincipal extends JFrame {
     public JTextField getTxtDocumento() { return txtDocumento; }
     public JTextField getTxtTelefono() { return txtTelefono; }
     public JPanel getPanelPrincipal() { return panelPrincipal; }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            FormularioPrincipal ventana = new FormularioPrincipal();
+            ventana.setVisible(true);
+        });
+    }
 }
